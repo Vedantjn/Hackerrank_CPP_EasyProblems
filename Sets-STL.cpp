@@ -3,38 +3,41 @@
 #include <vector>
 #include <iostream>
 #include <set>
+#include <map>
 #include <algorithm>
 using namespace std;
 
 int main()
 {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */
-    int q;
-    cin >> q;
-    set<int> s;
-    while (q--)
+    map<string, int> m;
+    int N = 0;
+    cin >> N;
+    for (int i = 0; i < N; i++)
     {
-        int y, x;
-        cin >> y >> x;
-        if (y == 1)
+        int q = 0;
+        cin >> q;
+        string x;
+        if (q == 1)
         {
-            s.insert(x);
+            int y = 0;
+            cin >> x;
+            cin >> y;
+            m[x] += y;
         }
-        else if (y == 2)
+        else if (q == 2)
         {
-            s.erase(x);
+            cin >> x;
+            m.erase(x);
         }
-        else if (y == 3)
+        else
         {
-            set<int>::iterator itr = s.find(x);
-            if (itr == s.end())
-            {
-                cout << "No\n";
-            }
+            cin >> x;
+            map<string, int>::iterator itr = m.find(x);
+            if (itr != m.end())
+                cout << m[x] << endl;
             else
-            {
-                cout << "Yes\n";
-            }
+                cout << 0 << endl;
         }
     }
     return 0;
