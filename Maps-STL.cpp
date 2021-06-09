@@ -10,30 +10,35 @@ using namespace std;
 int main()
 {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */
-    int q, y;
-    string x;
-    cin >> q;
-
-    map<string, int> s;
-
-    while (q--)
+    map<string, int> m;
+    int N = 0;
+    cin >> N;
+    for (int i = 0; i < N; i++)
     {
-        int q1;
-        cin >> q1 >> x >> y;
-
-        if (q1 == 1)
+        int q = 0;
+        cin >> q;
+        string x;
+        if (q == 1)
         {
-            s.insert(make_pair(x, y));
+            int y = 0;
+            cin >> x;
+            cin >> y;
+            m[x] += y;
         }
-        else if (q1 == 2)
+        else if (q == 2)
         {
-            s.erase(x);
+            cin >> x;
+            m.erase(x);
         }
         else
         {
-            s[x];
+            cin >> x;
+            map<string, int>::iterator itr = m.find(x);
+            if (itr != m.end())
+                cout << m[x] << endl;
+            else
+                cout << 0 << endl;
         }
     }
-
     return 0;
 }
